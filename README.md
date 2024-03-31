@@ -1,7 +1,7 @@
 # parallelize-generator-promises
 
-[![bundle size](https://pkg-size.dev/badge/bundle/0)](https://pkg-size.dev/parallelize-generator-promises)
-[![codecov](https://codecov.io/gh/redabacha/parallelize-generator-promises/graph/badge.svg?token=KMRTWA2DHQ)](https://codecov.io/gh/redabacha/parallelize-generator-promises)
+[![bundle size](https://pkg-size.dev/badge/bundle/553)](https://pkg-size.dev/parallelize-generator-promises)
+[![codecov](https://codecov.io/gh/redabacha/parallelize-generator-promises/graph/badge.svg?token=43rmo14Sa3)](https://codecov.io/gh/redabacha/parallelize-generator-promises)
 [![JSR score](https://jsr.io/badges/@reda/parallelize-generator-promises/score)](https://jsr.io/@reda/parallelize-generator-promises/score)
 [![JSR](https://jsr.io/badges/@reda/parallelize-generator-promises)](https://jsr.io/@reda/parallelize-generator-promises)
 [![npm](https://shields.io/npm/v/parallelize-generator-promises)](https://www.npmjs.com/package/parallelize-generator-promises)
