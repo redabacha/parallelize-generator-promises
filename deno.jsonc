@@ -1,0 +1,12 @@
+{
+  "name": "@reda/parallelize-generator-promises",
+  "version": "1.0.0",
+  "exports": "./mod.ts",
+  "exclude": ["CHANGELOG.md", "npm"],
+  "imports": {
+    "@deno/dnt": "jsr:@deno/dnt@^0.41.0",
+    "@std/assert": "jsr:@std/assert@^0.220.1",
+    "@std/async": "jsr:@std/async@^0.221.0",
+    "@std/testing": "jsr:@std/testing@^0.220.1"
+  }
+}
