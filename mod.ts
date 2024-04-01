@@ -9,13 +9,11 @@
  *
  * async function* getAllProductDetails() {
  *   for (let page = 1; page <= 100; page++) {
- *     const productsPromise = fetch(`/products?page=${page}`).then((res) =>
+ *     const products = await fetch(`/products?page=${page}`).then((res) =>
  *       res.json()
  *     );
- *     yield productsPromise.then((products) =>
- *       products.map(async (product) =>
- *         fetch(`/product/${product.id}/details`).then((res) => res.json())
- *       )
+ *     yield products.map((product) =>
+ *       fetch(`/product/${product.id}/details`).then((res) => res.json())
  *     );
  *   }
  * }
