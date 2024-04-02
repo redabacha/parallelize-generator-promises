@@ -76,3 +76,28 @@ it("should passthrough if input generator promise throws an error", async () => 
     assertIsError(e, Error, "test failure");
   }
 });
+
+it("should not buffer more promises once maxBufferedPromises is reached", async () => {
+  const results: number[] = [];
+  const { promise, resolve } = Promise.withResolvers<void>();
+  let generatorYielded = false;
+  let generatorYieldedEarly = false;
+
+  delay(0).then(() => {
+    generatorYieldedEarly = generatorYielded;
+    resolve();
+  });
+  for await (
+    const result of parallelizeGeneratorPromises(function* () {
+      yield [Promise.resolve(1)];
+      yield [promise.then(() => 2)]; // generator should wait here until promise is resolved
+      yield [promise.then(() => 3)];
+      generatorYielded = true;
+    }, { maxBufferedPromises: 1 })
+  ) {
+    results.push(result);
+  }
+
+  assertEquals(results, [1, 2, 3]);
+  assert(!generatorYieldedEarly, "generator yielded too early");
+});

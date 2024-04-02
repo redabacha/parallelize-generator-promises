@@ -64,3 +64,9 @@ possible to keep the iterator fed.
 
 If a concurrency limit is required, this utility pairs very well with a
 semaphore library such as [async-sema](https://github.com/vercel/async-sema).
+
+## Options
+
+| Name                  | Description                                                                                                                                                                                                                                                                                                                                     |
+| :-------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `maxBufferedPromises` | Limits the maximum number of promises that can be buffered at any given time. Useful to manage memory usage in the case where you are generating a lot of promises that aren't being consumed at a fast enough rate. **NOTE: this value must be greater than or equal to 1.** By default this is `undefined` which means there is no limit set. |
