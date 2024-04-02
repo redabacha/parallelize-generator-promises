@@ -30,7 +30,27 @@ To use from JSR, install the
 package and then import into a module:
 
 ```js
-import { parallelizeGeneratorPromises } from "parallelize-generator-promises";
+import { parallelizeGeneratorPromises } from "@reda/parallelize-generator-promises";
+```
+
+### Polyfilling Promise.withResolvers
+
+If you are using Node.js v20 or below, you will require a polyfill for
+[`Promise.withResolvers`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/withResolvers).
+
+A polyfill for this is available in a separate export as part of this package.
+To use the provided polyfill, import it at the entrypoint of your application.
+
+npm:
+
+```js
+import "parallelize-generator-promises/promise-with-resolvers-polyfill";
+```
+
+jsr:
+
+```js
+import "@reda/parallelize-generator-promises/promise-with-resolvers-polyfill";
 ```
 
 ## Usage

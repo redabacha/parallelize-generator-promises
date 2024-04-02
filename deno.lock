@@ -89,7 +89,10 @@
         ]
       },
       "@std/testing@0.220.1": {
-        "integrity": "be77cc1df543f70217d450612637f9f6fcc6887f19fca89665ce08456ee1f290"
+        "integrity": "be77cc1df543f70217d450612637f9f6fcc6887f19fca89665ce08456ee1f290",
+        "dependencies": [
+          "jsr:@std/assert@^0.220.1"
+        ]
       }
     },
     "npm": {

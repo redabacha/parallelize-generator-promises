@@ -89,7 +89,7 @@ it("should not buffer more promises once maxBufferedPromises is reached", async 
   });
   for await (
     const result of parallelizeGeneratorPromises(function* () {
-      yield [Promise.resolve(1)];
+      yield [promise.then(() => 1)];
       yield [promise.then(() => 2)]; // generator should wait here until promise is resolved
       yield [promise.then(() => 3)];
       generatorYielded = true;

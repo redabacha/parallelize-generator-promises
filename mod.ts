@@ -61,11 +61,17 @@ export async function* parallelizeGeneratorPromises<T>(
   { maxBufferedPromises }: ParallelizeGeneratorPromisesOptions = {},
 ): AsyncGenerator<T, void, undefined> {
   const bufferedPromises: Promise<T>[] = [];
-  const resolvers: ((promise: Promise<T>) => void)[] = [];
+  const bufferedPromisesResolvers: ((promise: Promise<T>) => void)[] = [];
   let done = false;
   let error;
-  let promiseResolve: () => void;
-  let promise = new Promise<void>((resolve) => (promiseResolve = resolve));
+  let {
+    promise: inputGeneratorYieldPromise,
+    resolve: inputGeneratorYieldPromiseResolve,
+  } = Promise.withResolvers<void>();
+  let {
+    promise: outputGeneratorYieldPromise,
+    resolve: outputGeneratorYieldPromiseResolve,
+  } = Promise.withResolvers<void>();
 
   (async () => {
     try {
@@ -73,20 +79,24 @@ export async function* parallelizeGeneratorPromises<T>(
         while (
           maxBufferedPromises && bufferedPromises.length >= maxBufferedPromises
         ) {
-          await Promise.race(bufferedPromises).catch(() => {});
+          await outputGeneratorYieldPromise;
         }
-        for (const bufferedPromise of promises) {
-          bufferedPromises.push(
-            new Promise((resolve) => resolvers.push(resolve)),
-          );
-          bufferedPromise
+        for (const promise of promises) {
+          const { promise: bufferedPromise, resolve: bufferedPromiseResolve } =
+            Promise.withResolvers<T>();
+          bufferedPromises.push(bufferedPromise);
+          bufferedPromisesResolvers.push(bufferedPromiseResolve);
+          promise
             .catch(() => {})
             .finally(() => {
-              resolvers.shift()!(bufferedPromise);
+              bufferedPromisesResolvers.shift()!(promise);
             });
         }
-        promiseResolve!();
-        promise = new Promise<void>((resolve) => (promiseResolve = resolve));
+        inputGeneratorYieldPromiseResolve();
+        ({
+          promise: inputGeneratorYieldPromise,
+          resolve: inputGeneratorYieldPromiseResolve,
+        } = Promise.withResolvers<void>());
       }
     } catch (e) {
       error = e;
@@ -96,12 +106,14 @@ export async function* parallelizeGeneratorPromises<T>(
   })();
 
   while (!done) {
-    await promise;
+    await inputGeneratorYieldPromise;
     while (bufferedPromises.length > 0) {
-      const bufferedPromise = bufferedPromises.shift();
-      if (bufferedPromise) {
-        yield bufferedPromise;
-      }
+      yield bufferedPromises.shift()!;
+      outputGeneratorYieldPromiseResolve();
+      ({
+        promise: outputGeneratorYieldPromise,
+        resolve: outputGeneratorYieldPromiseResolve,
+      } = Promise.withResolvers<void>());
     }
   }
 
