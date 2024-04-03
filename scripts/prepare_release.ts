@@ -20,6 +20,7 @@ await build({
     sourceMap: true,
     target: "ES2022",
   },
+  declaration: "separate",
   declarationMap: true,
   entryPoints: ["./mod.ts", {
     name: "./promise-with-resolvers-polyfill",
