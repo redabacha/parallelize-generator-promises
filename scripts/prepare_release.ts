@@ -20,7 +20,7 @@ await build({
     sourceMap: true,
     target: "ES2022",
   },
-  declaration: "separate",
+  declaration: "inline",
   declarationMap: true,
   entryPoints: ["./mod.ts", {
     name: "./promise-with-resolvers-polyfill",
@@ -39,7 +39,18 @@ await build({
     description: "Runs promises yielded by generators in parallel",
     repository: "https://github.com/redabacha/parallelize-generator-promises",
     license: "MIT",
-    sideEffects: false,
+    exports: {
+      ".": {
+        default: {
+          default: "./script/mod.js",
+        },
+      },
+      "./promise-with-resolvers-polyfill": {
+        default: {
+          default: "./script/promise-with-resolvers-polyfill.js",
+        },
+      },
+    },
   },
   async postBuild() {
     await Promise.all([
