@@ -1,3 +1,9 @@
+/**
+ * @module
+ *
+ * A polyfill for Promise.withResolvers. To use, import at the entrypoint of your application.
+ */
+
 if (!Promise["withResolvers"]) {
   Promise["withResolvers"] = function withResolvers<T>() {
     let promiseResolve: PromiseWithResolvers<T>["resolve"];
