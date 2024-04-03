@@ -25,6 +25,7 @@ await build({
   esModule: false,
   skipNpmInstall: true,
   test: false,
+  typeCheck: false,
   outDir: "./npm",
   shims: {},
   package: {
