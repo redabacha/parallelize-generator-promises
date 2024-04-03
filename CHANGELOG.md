@@ -1,3 +1,5 @@
+## [1.1.5](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.4...v1.1.5) (2024-04-03)
+
 ## [1.1.4](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.3...v1.1.4) (2024-04-03)
 
 
