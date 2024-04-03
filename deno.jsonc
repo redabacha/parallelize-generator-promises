@@ -1,6 +1,6 @@
 {
   "name": "@reda/parallelize-generator-promises",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "exports": {
     ".": "./mod.ts",
     "./promise-with-resolvers-polyfill": "./promise-with-resolvers-polyfill.ts"

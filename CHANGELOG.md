@@ -1,3 +1,10 @@
+## [1.1.2](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.1...v1.1.2) (2024-04-03)
+
+
+### Bug Fixes
+
+* add polyfill export to dnt config ([403f8a4](https://github.com/redabacha/parallelize-generator-promises/commit/403f8a4a080119bd2ea8894ac4dc39d17915375f))
+
 ## [1.1.1](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.0...v1.1.1) (2024-04-03)
 
 
