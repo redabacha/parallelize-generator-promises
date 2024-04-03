@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.0...v1.1.1) (2024-04-03)
+
+
+### Bug Fixes
+
+* remove Promise.race causing race condition ([#4](https://github.com/redabacha/parallelize-generator-promises/issues/4)) ([1dcd10f](https://github.com/redabacha/parallelize-generator-promises/commit/1dcd10f740d8647b6b59f06bd68690e87a859a60))
+
 # [1.1.0](https://github.com/redabacha/parallelize-generator-promises/compare/v1.0.2...v1.1.0) (2024-04-02)
 
 
