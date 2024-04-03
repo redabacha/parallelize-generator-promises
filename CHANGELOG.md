@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.2...v1.1.3) (2024-04-03)
+
+
+### Bug Fixes
+
+* **dnt:** set declaration to separate ([81e8d19](https://github.com/redabacha/parallelize-generator-promises/commit/81e8d1922553fbe37f3d78b18088e92fbcd943b9))
+
 ## [1.1.2](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.1...v1.1.2) (2024-04-03)
 
 
