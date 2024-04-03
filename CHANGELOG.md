@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.3...v1.1.4) (2024-04-03)
+
+
+### Bug Fixes
+
+* **dnt:** override generated exports ([ee318d5](https://github.com/redabacha/parallelize-generator-promises/commit/ee318d5dc2e13445955cfe41bc074199b646c309))
+
 ## [1.1.3](https://github.com/redabacha/parallelize-generator-promises/compare/v1.1.2...v1.1.3) (2024-04-03)
 
 
