@@ -21,7 +21,10 @@ await build({
     target: "ES2022",
   },
   declarationMap: true,
-  entryPoints: ["./mod.ts"],
+  entryPoints: ["./mod.ts", {
+    name: "./promise-with-resolvers-polyfill",
+    path: "./promise-with-resolvers-polyfill.ts",
+  }],
   esModule: false,
   skipNpmInstall: true,
   test: false,
