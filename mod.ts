@@ -67,11 +67,11 @@ export async function* parallelizeGeneratorPromises<T>(
   let {
     promise: inputGeneratorYieldPromise,
     resolve: inputGeneratorYieldPromiseResolve,
-  } = Promise.withResolvers<void>();
+  } = Promise["withResolvers"]<void>();
   let {
     promise: outputGeneratorYieldPromise,
     resolve: outputGeneratorYieldPromiseResolve,
-  } = Promise.withResolvers<void>();
+  } = Promise["withResolvers"]<void>();
 
   (async () => {
     try {
@@ -83,7 +83,7 @@ export async function* parallelizeGeneratorPromises<T>(
         }
         for (const promise of promises) {
           const { promise: bufferedPromise, resolve: bufferedPromiseResolve } =
-            Promise.withResolvers<T>();
+            Promise["withResolvers"]<T>();
           bufferedPromises.push(bufferedPromise);
           bufferedPromisesResolvers.push(bufferedPromiseResolve);
           promise
@@ -96,7 +96,7 @@ export async function* parallelizeGeneratorPromises<T>(
         ({
           promise: inputGeneratorYieldPromise,
           resolve: inputGeneratorYieldPromiseResolve,
-        } = Promise.withResolvers<void>());
+        } = Promise["withResolvers"]<void>());
       }
     } catch (e) {
       error = e;
@@ -113,7 +113,7 @@ export async function* parallelizeGeneratorPromises<T>(
       ({
         promise: outputGeneratorYieldPromise,
         resolve: outputGeneratorYieldPromiseResolve,
-      } = Promise.withResolvers<void>());
+      } = Promise["withResolvers"]<void>());
     }
   }
 
